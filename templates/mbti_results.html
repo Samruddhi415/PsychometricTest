@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">Your MBTI Personality Type</h1>
+        
+        <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            <div class="text-center mb-8">
+                <span class="inline-block bg-green-100 text-green-800 text-6xl font-bold py-3 px-6 rounded-lg">
+                    {{ mbti_type }}
+                </span>
+                <p class="mt-4 text-gray-600">Your Myers-Briggs Type Indicator based on questionnaire responses</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-semibold text-green-700 mb-2">Energy Source</h3>
+                    <div class="flex items-center">
+                        <div class="flex-1 bg-gray-200 h-8 rounded-full overflow-hidden">
+                            {% if 'I' in mbti_type %}
+                            <div class="bg-blue-500 h-8 rounded-l-full" style="width: 100%"></div>
+                            {% else %}
+                            <div class="bg-red-500 h-8 rounded-r-full" style="width: 100%; margin-left: auto"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-2 text-sm">
+                        <span class="font-medium {% if 'I' in mbti_type %}text-blue-600{% else %}text-gray-500{% endif %}">Introversion (I)</span>
+                        <span class="font-medium {% if 'E' in mbti_type %}text-red-600{% else %}text-gray-500{% endif %}">Extraversion (E)</span>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        {% if 'I' in mbti_type %}
+                        You gain energy from quiet reflection and solitude. You prefer deeper connections with fewer people.
+                        {% else %}
+                        You gain energy from social interaction and the external world. You enjoy meeting new people and group activities.
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-semibold text-green-700 mb-2">Information Processing</h3>
+                    <div class="flex items-center">
+                        <div class="flex-1 bg-gray-200 h-8 rounded-full overflow-hidden">
+                            {% if 'N' in mbti_type %}
+                            <div class="bg-purple-500 h-8 rounded-l-full" style="width: 100%"></div>
+                            {% else %}
+                            <div class="bg-yellow-500 h-8 rounded-r-full" style="width: 100%; margin-left: auto"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-2 text-sm">
+                        <span class="font-medium {% if 'N' in mbti_type %}text-purple-600{% else %}text-gray-500{% endif %}">Intuition (N)</span>
+                        <span class="font-medium {% if 'S' in mbti_type %}text-yellow-600{% else %}text-gray-500{% endif %}">Sensing (S)</span>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        {% if 'N' in mbti_type %}
+                        You focus on patterns, possibilities and the big picture. You are oriented toward the future and abstract concepts.
+                        {% else %}
+                        You focus on concrete details and facts. You trust information that comes directly from your five senses.
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-semibold text-green-700 mb-2">Decision Making</h3>
+                    <div class="flex items-center">
+                        <div class="flex-1 bg-gray-200 h-8 rounded-full overflow-hidden">
+                            {% if 'T' in mbti_type %}
+                            <div class="bg-green-500 h-8 rounded-l-full" style="width: 100%"></div>
+                            {% else %}
+                            <div class="bg-pink-500 h-8 rounded-r-full" style="width: 100%; margin-left: auto"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-2 text-sm">
+                        <span class="font-medium {% if 'T' in mbti_type %}text-green-600{% else %}text-gray-500{% endif %}">Thinking (T)</span>
+                        <span class="font-medium {% if 'F' in mbti_type %}text-pink-600{% else %}text-gray-500{% endif %}">Feeling (F)</span>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        {% if 'T' in mbti_type %}
+                        You make decisions based on logic, consistency, and objective analysis of cause and effect.
+                        {% else %}
+                        You make decisions based on personal values and how your actions affect others.
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-semibold text-green-700 mb-2">Lifestyle</h3>
+                    <div class="flex items-center">
+                        <div class="flex-1 bg-gray-200 h-8 rounded-full overflow-hidden">
+                            {% if 'J' in mbti_type %}
+                            <div class="bg-indigo-500 h-8 rounded-l-full" style="width: 100%"></div>
+                            {% else %}
+                            <div class="bg-orange-500 h-8 rounded-r-full" style="width: 100%; margin-left: auto"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-2 text-sm">
+                        <span class="font-medium {% if 'J' in mbti_type %}text-indigo-600{% else %}text-gray-500{% endif %}">Judging (J)</span>
+                        <span class="font-medium {% if 'P' in mbti_type %}text-orange-600{% else %}text-gray-500{% endif %}">Perceiving (P)</span>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        {% if 'J' in mbti_type %}
+                        You prefer structure, planning, and organization. You like to make decisions and have things settled.
+                        {% else %}
+                        You prefer flexibility, spontaneity and keeping options open. You adapt easily to new situations.
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            
+            <!-- MBTI Type Description -->
+            <div class="mb-8 p-6 bg-green-50 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold text-green-700 mb-4">{{ mbti_type }} Personality Overview</h3>
+                <p class="mb-4 text-gray-700">
+                    {% if mbti_type == "INTJ" %}
+                    Known as "The Architect," you're analytical, strategic, and value knowledge. You pursue improvement with determination and high standards.
+                    {% elif mbti_type == "INTP" %}
+                    Known as "The Logician," you're innovative, logical, and seek understanding of complex systems. You value accuracy and intellectual exploration.
+                    {% elif mbti_type == "ENTJ" %}
+                    Known as "The Commander," you're decisive, strategic, and focus on efficiency. You're a natural leader who drives systems toward improvement.
+                    {% elif mbti_type == "ENTP" %}
+                    Known as "The Debater," you're quick-thinking, curious, and intellectually versatile. You enjoy challenging ideas and exploring possibilities.
+                    {% elif mbti_type == "INFJ" %}
+                    Known as "The Advocate," you're insightful, principled, and value meaningful connection. You seek to help others and make a positive impact.
+                    {% elif mbti_type == "INFP" %}
+                    Known as "The Mediator," you're idealistic, empathetic, and guided by inner values. You seek authenticity and meaningful contribution.
+                    {% elif mbti_type == "ENFJ" %}
+                    Known as "The Protagonist," you're charismatic, empathetic, and people-focused. You inspire others and facilitate growth and harmony.
+                    {% elif mbti_type == "ENFP" %}
+                    Known as "The Campaigner," you're enthusiastic, creative, and people-oriented. You connect ideas and people with infectious energy.
+                    {% elif mbti_type == "ISTJ" %}
+                    Known as "The Logistician," you're practical, fact-oriented, and reliable. You value tradition and methodically fulfill your responsibilities.
+                    {% elif mbti_type == "ISFJ" %}
+                    Known as "The Defender," you're warm, dedicated, and detail-oriented. You protect others and uphold traditions with quiet strength.
+                    {% elif mbti_type == "ESTJ" %}
+                    Known as "The Executive," you're organized, practical, and focused on results. You implement systems and maintain order efficiently.
+                    {% elif mbti_type == "ESFJ" %}
+                    Known as "The Consul," you're attentive, cooperative, and socially aware. You create harmony and support others' wellbeing.
+                    {% elif mbti_type == "ISTP" %}
+                    Known as "The Virtuoso," you're hands-on, analytical, and independent. You solve practical problems with efficient skill.
+                    {% elif mbti_type == "ISFP" %}
+                    Known as "The Adventurer," you're artistic, sensitive, and present-focused. You express yourself through actions and aesthetics.
+                    {% elif mbti_type == "ESTP" %}
+                    Known as "The Entrepreneur," you're energetic, pragmatic, and perceptive. You adapt quickly and enjoy hands-on problem-solving.
+                    {% elif mbti_type == "ESFP" %}
+                    Known as "The Entertainer," you're spontaneous, enthusiastic, and present-focused. You bring joy to others and embrace life's experiences.
+                    {% endif %}
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <a href="{{ url_for('index') }}" class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors shadow-md">
+                    Return to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

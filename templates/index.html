@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">Personality Analysis System</h1>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- OCEAN Analysis Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-700">OCEAN Analysis</h2>
+                <p class="mb-4 text-gray-700">Analyze your personality traits through facial expressions. This system captures your emotions and maps them to the Big Five personality traits.</p>
+                
+                <div class="mb-4 border-4 border-blue-200 rounded-lg overflow-hidden">
+                    <img id="video_feed" src="{{ url_for('video_feed') }}" 
+                         class="w-full rounded-lg">
+                </div>
+                
+                <form action="{{ url_for('analyze_ocean') }}" method="post" class="text-center">
+                    <button type="submit" 
+                            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-md">
+                        Analyze OCEAN Results
+                    </button>
+                </form>
+            </div>
+            
+            <!-- MBTI Questionnaire Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
+                <h2 class="text-2xl font-semibold mb-4 text-green-700">MBTI Questionnaire</h2>
+                <p class="mb-4 text-gray-700">Take our personality questionnaire to discover your Myers-Briggs Type Indicator. Answer questions about your preferences and behaviors to reveal your personality type.</p>
+                
+                <div class="mb-6 h-48 flex items-center justify-center bg-gray-100 rounded-lg">
+                    <div class="text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <p class="mt-2 text-gray-600">Answer 10 questions about your preferences</p>
+                    </div>
+                </div>
+                
+                <a href="{{ url_for('questionnaire') }}" 
+                   class="block text-center bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors shadow-md">
+                    Start MBTI Questionnaire
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-10 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-purple-700">About Personality Analysis</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-medium mb-2">OCEAN - Big Five Personality Traits</h3>
+                    <p class="text-gray-600">The Big Five personality traits, also known as the OCEAN model, include:</p>
+                    <ul class="list-disc ml-5 mt-2 text-gray-600">
+                        <li><span class="font-medium">Openness</span> - Appreciation for art, emotion, adventure, and unusual ideas</li>
+                        <li><span class="font-medium">Conscientiousness</span> - Self-discipline, organization, and achievement-orientation</li>
+                        <li><span class="font-medium">Extraversion</span> - Energy, positive emotions, and tendency to seek stimulation</li>
+                        <li><span class="font-medium">Agreeableness</span> - Tendency to be compassionate and cooperative</li>
+                        <li><span class="font-medium">Neuroticism</span> - Tendency to experience negative emotions</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-2">MBTI - Myers-Briggs Type Indicator</h3>
+                    <p class="text-gray-600">The MBTI identifies 16 personality types based on four dimensions:</p>
+                    <ul class="list-disc ml-5 mt-2 text-gray-600">
+                        <li><span class="font-medium">Extraversion (E) vs Introversion (I)</span> - Where you focus your attention</li>
+                        <li><span class="font-medium">Sensing (S) vs Intuition (N)</span> - How you take in information</li>
+                        <li><span class="font-medium">Thinking (T) vs Feeling (F)</span> - How you make decisions</li>
+                        <li><span class="font-medium">Judging (J) vs Perceiving (P)</span> - How you deal with the outer world</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

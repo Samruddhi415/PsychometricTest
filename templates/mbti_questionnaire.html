@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Questionnaire</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">MBTI Personality Questionnaire</h1>
+        
+        <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg mb-8">
+            <p class="text-gray-700 mb-4">
+                Please answer the following questions honestly. There are no right or wrong answers. Your responses will be analyzed to determine your MBTI personality type.
+            </p>
+            <p class="text-gray-700">
+                Take your time and be thoughtful about your responses for the most accurate results.
+            </p>
+        </div>
+        
+        <form action="{{ url_for('submit_mbti') }}" method="post" class="max-w-3xl mx-auto">
+            {% for question in questions %}
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6 transition-all hover:shadow-xl">
+                <p class="text-lg font-medium mb-4">{{ loop.index }}. {{ question }}</p>
+                <textarea
+                    name="answers[]"
+                    required
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    rows="3"
+                    placeholder="Type your answer here..."
+                ></textarea>
+            </div>
+            {% endfor %}
+            
+            <div class="text-center mb-8">
+                <button type="submit" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors shadow-md">
+                    Submit Answers
+                </button>
+                <a href="{{ url_for('index') }}" class="ml-4 px-8 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                    Return Home
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
